@@ -1,6 +1,5 @@
 import React from 'react'
 import { Fragment } from 'react'
-import { Route, Router } from 'react-router'
 import Header from './Header'
 import HomePage from './homepage/HomePage'
 
