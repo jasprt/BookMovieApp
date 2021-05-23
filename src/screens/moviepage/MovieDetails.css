@@ -1,0 +1,29 @@
+.back-button {
+    transition-duration: 0.4s;
+    background-color: white;
+    border: none;
+    margin: 8px;
+}
+
+.back-button:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.movie-poster {
+    margin: 15px;
+    width: 200px;
+    height: 278px;
+}
+.movie-detail-container{
+    display: flex;
+}
+.movie-detail-info{
+    display: flex;
+    flex-direction: column;
+    width: 800px;
+}
+
+label{
+    font-weight: bold;
+}

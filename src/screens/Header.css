@@ -2,11 +2,16 @@
     display: flex;
     background: rgb(102, 95, 95);
     justify-content: space-between;
+    height: 60px;
+    align-items: center;
 }
 
 .header-gif{
-    height: 50px;
+    height: 35px;
     margin: 10px;
-    border-radius: 10px;
-    border: none;
+    background: #ff7f7f;
+}
+
+.header-gif::after{
+    motion-rotation: auto;
 }

@@ -1,29 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import './DisplayUpcomingMovies.css';
 
-export default function DisplayUpcomingMovies() {
+export default function DisplayUpcomingMovies(props) {
+    const [getMovieList, setMovieList] = useState([]);
 
-    const fetchUpcomingMovies = () => {
-        const uri = "/api/v1/movies?page=1&limit=10&status=PUBLISHED";
-        fetch(uri)
-            .then(rawResponse => rawResponse.json())
-            .then(data => {
-                let id = 0;
-                data.movies.forEach(element => {
-                    id = id + 1;
-                    const template = `
-                    <img id=${element.id} src=${element.poster_url} alt="...loading" />
-                    `
-                    const divElement = document.createElement('div');
-                    divElement.innerHTML = template;
-                    document.getElementById('upcoming-movie-listing').appendChild(divElement);
-                });
-            })
-    }
+    useEffect(() => {
+        const fetchApi = async () => {
+            const uri = "/api/v1/movies?page=1&limit=10&status=PUBLISHED";
+            const response = await fetch(uri);
+            const result = await response.json();
+            setMovieList(result.movies);
+        }
+        fetchApi();
+    }, []);
 
     return (
         <div id="upcoming-movie-listing" className='movie-listing-container'>
-            { fetchUpcomingMovies()}
+            {getMovieList.map(element => {
+                return (
+                    <div key={element.id}>
+                        <Link to={`/moviedetails/${element.id}`} id={element.id}>
+                            <img id={element.id} src={element.poster_url} alt="...loading" />
+                        </Link>
+                    </div>
+                )
+            })}
         </div>
     )
 }

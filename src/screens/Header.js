@@ -1,7 +1,7 @@
 import React from 'react'
 import ActionButton from './homepage/ActionButton';
 import './Header.css'
-import logo from '../assets/film-dark.gif'
+import logo from '../assets/logo.svg'
 
 const Header = () => {
     return (
