@@ -1,0 +1,12 @@
+.header-bar{
+    display: flex;
+    background: rgb(102, 95, 95);
+    justify-content: space-between;
+}
+
+.header-gif{
+    height: 50px;
+    margin: 10px;
+    border-radius: 10px;
+    border: none;
+}
