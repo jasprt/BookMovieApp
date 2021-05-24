@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import './MovieDetails.css'
 
 const MovieDetails = (props) => {
-
+    console.log("props", props);
     const [getMovieDetails, setMovieDetails] = useState([]);
 
     useEffect(() => {
@@ -15,14 +15,26 @@ const MovieDetails = (props) => {
             setMovieDetails(result);
         }
         fetchMovieDetails();
+
+        if (props.history.match.params.released === "released") {
+            document.getElementById('bookshowbtn').style.display = "block";
+        } else {
+            document.getElementById('bookshowbtn').style.display = "none";
+        }
+
     }, []);
+
+    const hideBookShow = () => {
+        console.log("Removing bookshow button", document.getElementById('bookshowbtn'));
+        document.getElementById('bookshowbtn').style.display = "none";
+    }
 
     const backButton = "< Back to Home";
     return (
         <div>
             <div>
                 <Link to="/" >
-                    <button className="back-button" > {backButton} </button>
+                    <button className="back-button" onClick={hideBookShow}> {backButton} </button>
                 </Link>
             </div>
             <div className="movie-detail-container" >

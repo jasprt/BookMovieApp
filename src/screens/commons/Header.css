@@ -1,0 +1,34 @@
+.header-bar{
+    background: #222;
+    height: 36px;
+    align-items: center;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 16px;
+    padding-right: 32px;
+}
+
+.header-gif{
+    height: 35px;
+    margin: 2px;
+    background: #ff7f7f;
+    float: left;
+}
+
+.rotate {
+    animation: rotation 8s infinite linear;
+}
+
+@keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+}
+
+.btn{
+  float: right;
+  margin: 2px;
+}

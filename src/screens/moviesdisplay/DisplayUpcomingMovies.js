@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './DisplayUpcomingMovies.css';
 
-export default function DisplayUpcomingMovies(props) {
+export default function DisplayUpcomingMovies() {
     const [getMovieList, setMovieList] = useState([]);
-
+    const upcoming = "upcoming"
     useEffect(() => {
         const fetchApi = async () => {
             const uri = "/api/v1/movies?page=1&limit=10&status=PUBLISHED";
@@ -20,7 +20,7 @@ export default function DisplayUpcomingMovies(props) {
             {getMovieList.map(element => {
                 return (
                     <div key={element.id}>
-                        <Link to={`/moviedetails/${element.id}`} id={element.id}>
+                        <Link to={`/moviedetails/${upcoming}/${element.id}`} id={element.id}>
                             <img id={element.id} src={element.poster_url} alt="...loading" />
                         </Link>
                     </div>
