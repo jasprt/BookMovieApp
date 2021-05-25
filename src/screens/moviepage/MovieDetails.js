@@ -1,42 +1,38 @@
 import { Link } from 'react-router-dom';
 import React, { useEffect, useState } from 'react'
 import './MovieDetails.css'
+import Header from '../commons/Header';
 
 const MovieDetails = (props) => {
-    console.log("props", props);
     const [getMovieDetails, setMovieDetails] = useState([]);
 
     useEffect(() => {
         const fetchMovieDetails = async () => {
-            const id = props.history.match.params.id;
+            const id = props.match.params.id;
             const uri = `/api/v1/movies/${id}`;
             const response = await fetch(uri);
             const result = await response.json();
             setMovieDetails(result);
+            if (result.status === "RELEASED") {
+                document.getElementById('bookshowbtn').style.display = "block";
+            } else {
+                document.getElementById('bookshowbtn').style.display = "none";
+            }
         }
         fetchMovieDetails();
-
-        if (props.history.match.params.released === "released") {
-            document.getElementById('bookshowbtn').style.display = "block";
-        } else {
-            document.getElementById('bookshowbtn').style.display = "none";
-        }
-
     }, []);
 
     const hideBookShow = () => {
-        console.log("Removing bookshow button", document.getElementById('bookshowbtn'));
         document.getElementById('bookshowbtn').style.display = "none";
     }
 
     const backButton = "< Back to Home";
     return (
         <div>
-            <div>
-                <Link to="/" >
-                    <button className="back-button" onClick={hideBookShow}> {backButton} </button>
-                </Link>
-            </div>
+            <Header movieId={props.match.params.id} />
+            <Link to="/" >
+                <button className="back-button" onClick={hideBookShow}> {backButton} </button>
+            </Link>
             <div className="movie-detail-container" >
                 <img className="movie-poster"
                     src={getMovieDetails.poster_url}
@@ -67,11 +63,11 @@ const MovieDetails = (props) => {
                     <div>
                         <label>Trailer:</label>
                     </div>
-                    <div>
-                        {/* TODO Update URL of each movie in IntelliJ and reload DB data */}
+                    {/* <div>
+                        TODO Update URL of each movie in IntelliJ and reload DB data
                         <iframe width="800" height="280" src={`${getMovieDetails.trailer_url}?autoplay=1`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
                         </iframe>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

@@ -7,14 +7,14 @@ import MovieDetails from './moviepage/MovieDetails'
 import BookShow from './bookshow/BookShow'
 
 export default function Controller() {
+    const baseURL = "/api/v1/";
     return (
         <Fragment>
-            <Header />
             <Router>
                 <div>
-                    <Route exact path='/' render={(history, props) => <HomePage {...props} history={history} />} />
-                    <Route exact path='/moviedetails/:released/:id' render={(history, props) => <MovieDetails {...props} history={history} />} />
-                    <Route exact path='/bookshow' render={(history, props) => <BookShow {...props} history={history} />} />
+                    <Route exact path='/' render={(props) => <HomePage {...props} />} />
+                    <Route exact path='/movie/:id' render={(props) => <MovieDetails {...props} />} />
+                    <Route exact path='/:id/bookshow' render={(props) => <BookShow {...props} baseUrl={baseURL} />} />
                 </div>
             </Router>
         </Fragment>

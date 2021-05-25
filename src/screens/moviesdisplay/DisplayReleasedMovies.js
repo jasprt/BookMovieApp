@@ -4,7 +4,6 @@ import './DisplayReleasedMovies.css';
 
 export default function DisplayReleasedMovies() {
     const [getMovieList, setMovieList] = useState([]);
-    const released = "released";
     useEffect(() => {
         const fetchApi = async () => {
             const uri = "/api/v1/movies?page=1&limit=10&status=RELEASED";
@@ -22,7 +21,7 @@ export default function DisplayReleasedMovies() {
             {getMovieList.map(element => {
                 return (
                     <div key={element.id}>
-                        <Link to={`/moviedetails/${released}/${element.id}`} id={element.id} props="RELEASED">
+                        <Link to={`/movie/${element.id}`}>
                             <img id={element.id} src={element.poster_url} alt="...loading" />
                         </Link>
                     </div>
