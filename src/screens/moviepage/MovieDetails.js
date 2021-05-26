@@ -5,6 +5,9 @@ import Header from '../commons/Header';
 
 const MovieDetails = (props) => {
     const [getMovieDetails, setMovieDetails] = useState([]);
+    const [genres, setgenres] = useState([]);
+    const [artists, setArtists] = useState([]);
+    const isAutoplay = 0;
 
     useEffect(() => {
         const fetchMovieDetails = async () => {
@@ -12,7 +15,11 @@ const MovieDetails = (props) => {
             const uri = `/api/v1/movies/${id}`;
             const response = await fetch(uri);
             const result = await response.json();
+            console.log(result);
             setMovieDetails(result);
+            setgenres(result.genres);   
+            setArtists(result.artist);
+
             if (result.status === "RELEASED") {
                 document.getElementById('bookshowbtn').style.display = "block";
             } else {
@@ -25,7 +32,7 @@ const MovieDetails = (props) => {
     const hideBookShow = () => {
         document.getElementById('bookshowbtn').style.display = "none";
     }
-
+    
     const backButton = "< Back to Home";
     return (
         <div>
@@ -42,7 +49,7 @@ const MovieDetails = (props) => {
                         <label><h3>{getMovieDetails.title}</h3></label>
                     </div>
                     <div>
-                        <label>Genres: </label>{getMovieDetails.genres}
+                        <label>Genres: </label>{genres.toString()}
                     </div>
                     <div>
                         <label>Duration: </label>{getMovieDetails.duration}
@@ -63,11 +70,11 @@ const MovieDetails = (props) => {
                     <div>
                         <label>Trailer:</label>
                     </div>
-                    {/* <div>
-                        TODO Update URL of each movie in IntelliJ and reload DB data
-                        <iframe width="800" height="280" src={`${getMovieDetails.trailer_url}?autoplay=1`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                    <div>
+                        {/* TODO Update URL of each movie in IntelliJ and reload DB data */}
+                        <iframe width="800" height="280" src={`${getMovieDetails.trailer_url}?autoplay=${isAutoplay}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen>
                         </iframe>
-                    </div> */}
+                    </div>
                 </div>
             </div>
         </div>

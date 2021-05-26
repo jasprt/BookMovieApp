@@ -8,7 +8,7 @@ const Header = (props) => {
 
     return (
         <div className="header-bar">
-            <img className="logo-gif" src={logo} alt="loading..." className='header-gif rotate' />
+            <img src={logo} alt="loading..." className='header-gif rotate logo-gif' />
             <ActionButton {...props}></ActionButton>
         </div >
     )

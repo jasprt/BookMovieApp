@@ -1,32 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import './DisplayReleasedMovies.css';
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
+import GridListTileBar from '@material-ui/core/GridListTileBar';
 
-export default function DisplayReleasedMovies() {
-    const [getMovieList, setMovieList] = useState([]);
-    useEffect(() => {
-        const fetchApi = async () => {
-            const uri = "/api/v1/movies?page=1&limit=10&status=RELEASED";
-            const response = await fetch(uri);
-            const result = await response.json();
-            setMovieList(result.movies);
-        }
-        fetchApi();
-    }, []);
-
-    
+export default function DisplayReleasedMovies(props) {
 
     return (
-        <div id="released-movie-listing" className='released-movie-listing-container'>
-            {getMovieList.map(element => {
-                return (
-                    <div key={element.id}>
-                        <Link to={`/movie/${element.id}`}>
-                            <img id={element.id} src={element.poster_url} alt="...loading" />
+        <div>
+            <GridList cellHeight={350} cols={4} style={{ width: "76%" }}>
+                {props.movielist.map((tile) => (
+                    <GridListTile key={tile.id} rows={5} cols={1} style={{ marginTop: "20px", width: "30%", height: "auto", padding: "10px" }}>
+                        <Link to={`/movie/${tile.id}`}>
+                            <img src={tile.poster_url} alt={tile.title} />
+                            <GridListTileBar
+                                title={tile.title}
+                                subtitle={<span>Realease Date: {tile.release_date}</span>}
+                            />
                         </Link>
-                    </div>
-                )
-            })}
+                    </GridListTile>
+                ))}
+            </GridList>
         </div>
     )
 }
