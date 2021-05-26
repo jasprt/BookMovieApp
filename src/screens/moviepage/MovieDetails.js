@@ -29,7 +29,7 @@ const MovieDetails = (props) => {
     const backButton = "< Back to Home";
     return (
         <div>
-            <Header movieId={props.match.params.id} />
+            <Header {...props} />
             <Link to="/" >
                 <button className="back-button" onClick={hideBookShow}> {backButton} </button>
             </Link>

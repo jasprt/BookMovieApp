@@ -5,11 +5,11 @@ import DisplayReleasedMovies from '../moviesdisplay/DisplayReleasedMovies'
 import DisplayUpcomingMovies from '../moviesdisplay/DisplayUpcomingMovies'
 import './HomePage.css'
 
-export default function HomePage() {
+export default function HomePage(props) {
 
     return (
         <Fragment>
-            <Header />
+            <Header {...props}/>
             <div className="homepage-upcoming-title">Upcoming Movies</div>
             <DisplayUpcomingMovies />
             <DisplayReleasedMovies />

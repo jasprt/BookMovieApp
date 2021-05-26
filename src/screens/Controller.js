@@ -1,7 +1,6 @@
 import React from 'react'
 import { Fragment } from 'react'
 import { Route, BrowserRouter as Router } from 'react-router-dom'
-import Header from './commons/Header'
 import HomePage from './homepage/HomePage'
 import MovieDetails from './moviepage/MovieDetails'
 import BookShow from './bookshow/BookShow'

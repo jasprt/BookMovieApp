@@ -10,6 +10,17 @@ import './ActionButton.css'
 
 Modal.setAppElement('#root')
 
+const customStyles = {
+    content: {
+        top: '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        transform: 'translate(-50%, -50%)'
+    }
+};
+
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
 
@@ -42,18 +53,8 @@ function a11yProps(index) {
     };
 }
 
-const ActionButton = () => {
-    //Change to true to auto Open the Login Modal
+const ActionButton = (props) => {
     const [model, setmodel] = useState(false);
-    // const [username, setUserName] = useState("");
-    // const [password, setPassword] = useState("");
-    // const [firstname, setFirstName] = useState("");
-    // const [lastname, setlastName] = useState("");
-    // const [email, setemail] = useState("");
-    // const [registerpass, setRegisterPass] = useState("");
-    // const [contact, setcontact] = useState("");
-    // const [loginbutton, setloginbutton] = useState("Login");
-
     const [value, setValue] = useState(0);
     const [isLogin, setIsLogin] = useState("Login");
     const [form, setForm] = useState("Form-1");
@@ -152,12 +153,24 @@ const ActionButton = () => {
         alert('Successfully Loggedout!');
     }
 
+    const bookshowhandler = () => {
+        if (sessionStorage.getItem("loginuser") == null) {
+            setmodel(true);
+        } else {
+            props.history.push(`/${props.match.params.id}/bookshow`);
+        }
+
+    }
+
     return (
-        <div>
+        <div className="buttons">
+            {/* <Link to={movieId}> */}
+            <Button variant="contained" color="primary" id="bookshowbtn" style={{ display: 'none' }} onClick={bookshowhandler}>Book Show</Button>
+            {/* </Link> */}
             {/* TODO - Implement Login/Register Tab using Tabs and Modals */}
-            {!loginhidden && <Button id="actionButton" variant="contained" color="default" className="action-btn" onClick={() => setmodel(true)}>Login</Button>}
+            {!loginhidden && <Button id="actionButton" variant="contained" color="default" onClick={() => setmodel(true)}>Login</Button>}
             {loginhidden && <Button id="logoutButton" variant="contained" color="default" className="action-btn" onClick={removeSession}>Logout</Button>}
-            <Modal isOpen={model} onRequestClose={() => setmodel(false)}>
+            <Modal style={customStyles} isOpen={model} onRequestClose={() => setmodel(false)}>
                 <Tabs value={value} onChange={handleChange} centered variant="fullWidth">
                     <Tab label="Login" {...a11yProps(0)}></Tab>
                     <Tab label="Register" {...a11yProps(1)}></Tab>
@@ -207,6 +220,7 @@ const ActionButton = () => {
                     <Button className="actionButton" variant="contained" color="secondary" onClick={() => setmodel(false)}>Close</Button>
                 </div>
             </Modal>
+
         </div>
 
     )

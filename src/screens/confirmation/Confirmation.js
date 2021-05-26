@@ -101,7 +101,6 @@ const Confirmation = (props) => {
   return (
     <div className="Details">
       <Header />
-
       <div className="confirmation marginTop16">
         <div>
           <Link to={"/bookshow/" + props.match.params.id}>
