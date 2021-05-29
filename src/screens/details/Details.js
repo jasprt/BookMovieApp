@@ -49,6 +49,7 @@ const MovieDetails = (props) => {
             <Link to="/" >
                 <button className="back-button" onClick={hideBookShow}> {backButton} </button>
             </Link>
+
             <div className="movie-detail-container" >
                 <img className="movie-poster"
                     src={getMovieDetails.poster_url}
@@ -85,10 +86,13 @@ const MovieDetails = (props) => {
                         </iframe>
                     </div>
                 </div>
+
                 <div className="Rating-grid" style={{ position: "relative", textAlign: "center", width: "35%" }}>
+                    
                     <Typography variant="h5" component="h1">
                         Rate this movie:
                     </Typography>
+
                     <Typography>
                         <StarBorderIcon cursor="pointer" onClick={changeIconColoronCLick}></StarBorderIcon>
                         <StarBorderIcon cursor="pointer" onClick={changeIconColoronCLick}></StarBorderIcon>
@@ -96,9 +100,11 @@ const MovieDetails = (props) => {
                         <StarBorderIcon cursor="pointer" onClick={changeIconColoronCLick}></StarBorderIcon>
                         <StarBorderIcon cursor="pointer" onClick={changeIconColoronCLick}></StarBorderIcon>
                     </Typography>
+
                     <Typography variant="h6" component="h3" style={{ marginTop: "16px" }}>
                         Artists:
                     </Typography>
+
                     <GridList cols={2} style={{ width: "80%", justifyContent: "center", alignItems: "center", marginLeft: "16px" }}>
                         {!artists == "" && artists.map((a) =>
                         (
@@ -111,7 +117,6 @@ const MovieDetails = (props) => {
                             </GridListTile>
                         )
                         )}
-
                     </GridList>
                 </div>
             </div>
