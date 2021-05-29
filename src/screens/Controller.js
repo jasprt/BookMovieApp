@@ -1,8 +1,8 @@
 import React from 'react'
 import { Fragment } from 'react'
 import { Route, BrowserRouter as Router } from 'react-router-dom'
-import HomePage from './homepage/HomePage'
-import MovieDetails from './moviepage/MovieDetails'
+import HomePage from './home/Home'
+import MovieDetails from './details/Details'
 import BookShow from './bookshow/BookShow'
 
 export default function Controller() {

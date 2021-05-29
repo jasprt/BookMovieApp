@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Fragment } from 'react'
-import Header from '../commons/Header'
+import Header from '../commons//header/Header'
 import DisplayReleasedMovies from '../moviesdisplay/DisplayReleasedMovies'
 import DisplayUpcomingMovies from '../moviesdisplay/DisplayUpcomingMovies'
-import './HomePage.css'
-import { Button, Input, Select } from '@material-ui/core';
+import './Home.css'
+import { Button, Checkbox, Input, Select } from '@material-ui/core';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 
@@ -70,7 +70,10 @@ export default function HomePage(props) {
                     id="demo-simple-select"
                     onChange={artisthandleChange}>
                     {artists.map((artist, index) =>
-                        <MenuItem key={index} value={index}>{artist}</MenuItem>
+                        <MenuItem key={index} value={index}>
+                            <Checkbox key={index} value={index} />
+                            {artist}
+                        </MenuItem>
                     )}
                 </Select><br />
                 <InputLabel id="demo-simple-select-label">Genres</InputLabel>
@@ -80,10 +83,15 @@ export default function HomePage(props) {
                     id="demo-simple-select"
                     onChange={genreshandleChange}>
                     {genres.map((genre, index) =>
-                        <MenuItem key={index} value={index}>{genre}</MenuItem>
+                        <MenuItem key={index} value={index}>
+                            <Checkbox key={index} value={index} />
+                            {genre}
+                        </MenuItem>
                     )}
                 </Select><br />
+                <InputLabel id="demo-simple-select-label">From Release Date</InputLabel>
                 <Input type="Date" placeholder="Release Date"></Input><br />
+                <InputLabel id="demo-simple-select-label">To Release Date</InputLabel>
                 <Input type="Date" placeholder="Release End"></Input><br />
                 <Button color="primary" variant="contained">Apply</Button>
             </div>

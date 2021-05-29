@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import React, { useEffect, useState } from 'react'
-import './MovieDetails.css'
-import Header from '../commons/Header';
+import './Details.css'
+import Header from '../commons/header/Header';
 import { GridList, GridListTile, GridListTileBar, Typography } from '@material-ui/core';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 
@@ -100,16 +100,16 @@ const MovieDetails = (props) => {
                         Artists:
                     </Typography>
                     <GridList cols={2} style={{ width: "80%", justifyContent: "center", alignItems: "center", marginLeft: "16px" }}>
-                        {artists.map((a) => 
-                            (
+                        {!artists == "" && artists.map((a) =>
+                        (
                             <GridListTile>
                                 <img src={a.profile_url} alt={a.role_type} />
                                 <GridListTileBar
-                                    title={a.first_name +" "+ a.last_name}
-                                    // subtitle={<span>Realease Date: {tile.release_date}</span>}
+                                    title={a.first_name + " " + a.last_name}
+                                // subtitle={<span>Realease Date: {tile.release_date}</span>}
                                 />
                             </GridListTile>
-                            )
+                        )
                         )}
 
                     </GridList>
