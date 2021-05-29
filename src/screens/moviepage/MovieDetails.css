@@ -12,7 +12,7 @@
 
 .movie-poster {
     margin: 15px;
-    width: 200px;
+    width: 15%;
     height: 278px;
 }
 .movie-detail-container{
@@ -21,7 +21,7 @@
 .movie-detail-info{
     display: flex;
     flex-direction: column;
-    width: 800px;
+    width: 70%;
 }
 
 label{

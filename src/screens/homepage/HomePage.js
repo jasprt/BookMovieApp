@@ -4,7 +4,7 @@ import Header from '../commons/Header'
 import DisplayReleasedMovies from '../moviesdisplay/DisplayReleasedMovies'
 import DisplayUpcomingMovies from '../moviesdisplay/DisplayUpcomingMovies'
 import './HomePage.css'
-import { Input, Select } from '@material-ui/core';
+import { Button, Input, Select } from '@material-ui/core';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 
@@ -43,7 +43,6 @@ export default function HomePage(props) {
             const uri = "/api/v1/movies?page=1&limit=10&status=RELEASED";
             const response = await fetch(uri);
             const result = await response.json();
-            console.log(result);
             setReleasedMovieList(result.movies);
 
             const url = "/api/v1/movies?page=1&limit=10&status=PUBLISHED";
@@ -86,6 +85,7 @@ export default function HomePage(props) {
                 </Select><br />
                 <Input type="Date" placeholder="Release Date"></Input><br />
                 <Input type="Date" placeholder="Release End"></Input><br />
+                <Button color="primary" variant="contained">Apply</Button>
             </div>
         </Fragment>
     )
