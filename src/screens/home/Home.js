@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Fragment } from 'react'
-import Header from '../commons//header/Header'
+import Header from '../commons/header/Header'
 import DisplayReleasedMovies from '../moviesdisplay/DisplayReleasedMovies'
 import DisplayUpcomingMovies from '../moviesdisplay/DisplayUpcomingMovies'
 import './Home.css'
